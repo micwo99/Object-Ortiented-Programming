@@ -1,0 +1,124 @@
+micwo99
+
+=============================
+=      File description     =
+=============================
+oop.ex6 package
+oop.ex6.main
+JavaVerifier.java - Class that verfy if the code is valid
+Method.java - Class that represents a method
+Sjavac.java - Class that represents an Sjavac verifier
+Variable.java - Class that represents a variable
+MethodCall.java - Class that represents a call of a method
+VariableFactory.java -  Class that represents a variable factory
+
+
+oop.ex6.main.exceptions
+GeneralException.java - Class that represents the error class
+CommentException.java - Class that represents an invalid comment error
+BracketException.java - Class that represents a bracket error
+IllegalConditionException.java -class that represents a illegal condition
+IllegalSyntaxException.java - Class that represents an illegal syntax error
+MethodException.java - Class that represents an error about a method
+ReturnErrorException.java - Class that represents a wrong return error
+TypeException.java - Class that represents a type error
+VariableAssignmentException.java - Class that represents a error about the assignment of a variable
+VarInitializedException.java - Class that represents an error about of the initialization of a variable
+
+=============================
+=          Design           =
+=============================
+I create a class that will try to open the file and will read the file, if it don't success it will return 2
+if we succeed to read the file we will create an instance of the most important class that will verify if we received
+a valid code.the  class JavaVerifier used  many classes (all the exception, method.java,MethodCall.java,VariableFactory.java)
+I create also a factory in order to create all the different variable possible(parameters,global value ,variable in a scope...)
+in order to have a more understandability code.I also create a Method class and methodCall class that represents
+the method, and a call of a method.
+
+
+=============================
+=    Answers to questions   =
+=============================
+Exceptions handling:
+We created a new exception class called GeneralException which serves as the parent class for all other exception classes.
+Exceptions are thrown from the JavaVerifier when there's an error in the code and caught by the class Sjavac.
+The only exception  thrown within the Sjavac class is the IOException which occurs when the number of arguments
+is incorrect or the file path is invalid.
+
+How would you modify your code to add new types of variables (e.g., float)?
+I would make two changes:
+ -the pattern check within the JavaVerifier class so it can match the newly added type.
+ -I would change the regex pattern.
+
+
+Classes:
+I would simply create a new class that will reprensent a class.
+and then we it will also add the verification that a variable can be of the type of the class added.
+Different methods’ types (i.e int foo()):
+we will do severals changes:
+- checks the return value if it is the same type of the methode should return
+- checks when we assign to a varaible the return value of the function for example: int a= foo();(when foo return a int)
+- change the regex pattern of methods and also for calls of methods/
+
+
+Two regex used:
+
+(if|while)\s*\((\s*((true|false|(-?)(\d+)|(-?)(\d+)((\.\d*)?))|\s*(?:_\w|[a-zA-Z])+(?:\w*\s*)\s*|(-?)(\d+)((\.\d*)?))\s*
+(\|{2}|&&)\s*)*(\s*((true|false|(-?)(\d+)|(-?)(\d+)((\.\d*)?))|\s*(?:_\w|[a-zA-Z])+(?:\w*\s*)\s*|(-?)(\d+)((\.\d*)?))\s*)\)
+(\s*\{)
+
+    This regex pattern is designed to check a line of code that defines a while or if condition.
+    The pattern starts with either "if" or "while" followed by zero or more whitespace characters. Then, an opening parenthesis is expected.
+    The next section, within the parentheses, matches a series of conditions separated by either "&&" or "||". Each condition is composed of:
+    A boolean value of "true" or "false"
+    A number, either positive or negative, or a double.
+    A variable name that starts with a letter or underscore, followed by zero or more word characters.
+    The pattern continues to match the conditions, separated by either "&&" or "||", until the final condition, which is again composed of one of the above possibilities.
+    Finally, the pattern requires a closing parenthesis, followed by zero or more spaces, and an open bracket.
+
+(([a-zA-Z])+(\w*\s*))(\(\s*)(\s*((true|false|(-?)(\d+)|(-?)(\d+)((\.\d*)?))|\s*(?:_\w|[a-zA-Z])+
+(?:\w*\s*)\s*|(-?)(\d+)((\.\d*)?)|'.'|".*")\s*\s*,\s*)*(\s*((true|false|(-?)(\d+)|(-?)(\d+)((\.\d*)?))|\s*(?:_\w|[a-zA-Z])
++(?:\w*\s*)\s*|(-?)(\d+)((\.\d*)?)|'.'|".*")\s*)?(\)\s*);\s*
+
+    This regex pattern is designed to match a line of code that calls a method.
+    The pattern starts with a method name, which is composed of one or more letters followed by zero or more word characters.
+    Next, an opening parenthesis is expected, followed by zero or more spaces, and a series of zero or more comma-separated arguments, each of which is composed of:
+    A boolean value of "true" or "false"
+    A number, either positive or negative, with or without a decimal component
+    A variable name that starts with a letter or underscore, followed by zero or more word characters.
+    Finally, the pattern requires a closing parenthesis, followed by zero or more spaces, and ";" followed by zero or more spaces.
+
+
+
+
+
+=============================
+=          Tests            =
+=============================
+
+01.sjava - this test will return a zero because it is a valid code we are juste creating a function that does nothing
+02.sjava - this test will return 0 because we can have how many return we want we just have to have a return statement
+at the end of the method
+03.sjava - this test will return 1 because the code is not valid because there is a return line out of a method
+04.sjava - this test will return zero because it s an empty file with only comments
+05.sjava - this test will return 1 because we have a method that doesn't have a line return;
+06.sjava - this test will return 0 because we only declare a variable without giving to it a value
+07.sjava   this test will return 1 because we declare two methods with the same name
+08.sjava - the test will return 1 because we assign 0 to a variable of type char
+09.sjava - the test will return 1 because we declare two variable with the same name
+10.sjava - the test will return 1 because we have done int x=1+1; we have to write int x=2
+11.sjava - the test will return 1 because we assign to a variable an other variable with a different type
+12.sjava - the test will return 1 because in the if condition we didnt assign to x a value
+13.sjava - the test will return 1 because we didnt declared x
+14.sjava - the test will return 1 because we assign x as a global value
+15.sjava - the test will return 1 because the is a missing bracket
+16.sjava - the test will return 1 because the conditions are separated by | and not || or &&
+17.sjava - the test will return 1 because in the argument of the function there is a missing type
+18.sjava - the test will return 0 we are calling a method
+19.sjava - the test will return 1 we are calling a method with a parameters with a bad type
+20.sjava - the test  will return 1 because we are calling a method with a a number of parameters invalid
+
+
+
+
+

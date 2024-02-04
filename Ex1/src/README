@@ -1,0 +1,17 @@
+micwo99
+342768587
+
+Illegal_request = {"Try again, you have to start your statement with "say",
+                        "Before your statement the word "say" is necessary."}
+
+Legal_request = {"Well, you want me to say: <phrase>, so: <phrase>.",
+                     "You chose: "<phrase>"? Okay: <phrase>."}
+
+User: Good morning!
+Bot: Try again, you have to start your statement with "say".
+User: Say hello
+Bot: Well, you want me to say: hello, so: hello.
+User: Say I'm hungry
+Bot: You chose: "I'm hungry"? Okay: I'm hungry.
+User: Thank you!
+Bot: Before your statement the word "say" is necessary.

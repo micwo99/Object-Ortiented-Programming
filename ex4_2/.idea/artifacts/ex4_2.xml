@@ -1,0 +1,18 @@
+<component name="ArtifactManager">
+  <artifact type="jar" name="ex4_2">
+    <output-path>$PROJECT_DIR$/out/artifacts/ex4_2</output-path>
+    <root id="archive" name="ex4_2.jar">
+      <element id="directory" name="ascii_art">
+        <element id="directory" name="img_to_char">
+          <element id="file-copy" path="$PROJECT_DIR$/src/ascii_art/img_to_char/BrightnessImgCharMatcher.java" />
+          <element id="file-copy" path="$PROJECT_DIR$/src/ascii_art/img_to_char/CharRenderer.java" />
+        </element>
+        <element id="file-copy" path="$PROJECT_DIR$/src/ascii_art/Shell.java" />
+        <element id="file-copy" path="$PROJECT_DIR$/src/ascii_art/Driver.java" />
+        <element id="file-copy" path="$PROJECT_DIR$/src/ascii_art/Algorithms.java" />
+      </element>
+      <element id="file-copy" path="$PROJECT_DIR$/src/README" />
+      <element id="file-copy" path="$PROJECT_DIR$/src/simpson.png" />
+    </root>
+  </artifact>
+</component>

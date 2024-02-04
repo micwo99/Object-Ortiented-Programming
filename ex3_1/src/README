@@ -1,0 +1,87 @@
+micwo99
+342768587
+
+=============================
+===== File description ======
+=============================
+package src:
+    package brick_strategies:
+        AddPaddleStrategy.java: A strategy that create a new paddle at the middle of the game and erase it when
+        we touch it 3 times.
+        BrickStrategyFactory.java: A factory who create randomly strategies with the probability that we give us.
+        ChangeCameraStrategy.java: A strategy that change the camera that will follow the principal ball.
+        CollisionStrategy.java: the interface for all the strategy.
+        DoubleStrategy.java: A strategy that contains more than one strategy.
+        PuckStrategy.java: A strategy that create 3 new balls when you break a brick with this strategy.
+        RemoveBrickStrategy.java: a strategy that remove the brick when there is a collision with a ball
+        RemoveBrickStrategyDecorator.java: The decorator used to create every strategies in our game,
+        we use it in order to not  write the same code several times.this is the advantage of the decorator
+        WidePaddleStrategy.java: A strategy that create new object and when there is a collision with the principal
+        paddle, the paddle grows or we reduce it  randomly.
+
+
+    package gameobjects:
+        Ball.java: the principle ball of our game
+        BallCollisionCountdownAgent.java : this object count how many times the ball enter in collision when
+        he touched a brick with a camera strategy.
+        Brick.java:  the bricks of our game.
+        GraphicLifeCounter.java: the object that inform us how many life we have.
+        MockPaddle.java: the paddle that we create when a ball touched a brick with the AddPaddleStrategy.
+        NumericLifeCounter.java: the object that inform us how many life we have.
+        Paddle.java: the principal paddle.
+        Puck.java: the paddle that we create when a ball touched a brick with the PuckStrategy.
+        WidePaddle.java: an object that when the paddle touched it it grows or gets smaller.
+    BrickerGameManager.java: the class where we run the game with all the parameters we decide how the game works.
+    the size of the objects is due to the proper functioning of the game and in order to prevent certain bugs
+
+
+
+
+package algo_questions:
+    Solutions.java: alotStudyTime :
+                        complexity: let assume that the length of task=n and the length of timeSlots = m,
+                        so the time complexity is T(n)= n log(n) +m log(m)
+                        how works the algorithm: the algorithm is a greedy algorithm, in our case we sort the two
+                        parameters and then we check for each time slot if we can put a task in increasing order.
+
+                    minLeap:
+                        complexity: T(n)=O(n).
+                        how works the algorithm:the algorithm is a greedy algorithm, in our case at the beginning
+                        we check in which we can arrive from the first and we check which can go the furthest and
+                        we jump at this state and so on
+
+                    bucketWalk:
+                        complexity : There are n cases in our matrix and for each case the complexity is O(1) so we get:
+                        T(n)=O(n).
+
+                        how works the algorithm: the algorithm is a dynamic algorithm
+                            Sub-problem: num of ways to fill water trough of capacity i for 1 <= i <= n
+                            Recursion :
+                                        if i == 0 : Ways[i] = 1
+                                        else if i == 1: Ways[i] = 2
+                                        else : Ways[i] = Ways[i-1] +Ways[i-2]
+
+                            matrix: we create a matrix of size n. We fill the matrix from left
+                            to right.
+                            the solution of the problem is in the last case.
+
+                    numTrees:
+                    complexity : In our matrix there are n cases and for each case the complexity is O(n)
+                    so T(n)=O(n^2).
+
+                    how works the algorithm: the algorithm is a dynamic algorithm
+                        Sub-problem: number of BST which has exactly i nodes for 1 <= i <= n
+                        Recursion:
+                        if i == 0: Trees[i] = 1
+                        else : Trees[i] = sum for 1<=k<=n+1 (Trees[k]*Trees[i-k-1])
+                        Matrix: we create a matrix of size n. We fill the matrix from left
+                        to right.
+                        the solution of the problem is in the last case.
+
+
+
+
+
+
+
+

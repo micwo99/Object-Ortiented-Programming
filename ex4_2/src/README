@@ -1,0 +1,63 @@
+micwo99
+342768587
+
+
+=============================
+=      File description     =
+=============================
+./src/
+    ./src/ascii_art
+        -Driver.java
+        -Shell.java
+        ./src/ascii_art/img_to_char.java
+            -BrightnessImgCharMatcher.java
+            -CharRenderer.java
+    ./src/image
+        -FileImage.java
+        -Image.java
+        -ImageIterableProperty.java
+        -ImageView.java
+
+=============================
+=====   explanation    ======
+=============================
+    run time complexity  : 0(N) we pass all over the image  so the run time complexity is O(N)
+    run space complexity:O(N)  I Don't create a new image but I create an instance Image view that declare
+     when the subImage
+    start in the new image (x,y) and what is the size of the subImage(width, height)
+
+
+    We convert our image into an Ascii image thanks to many function:
+        1)For each character we calculate his brightness level with the help of the function getBrightness
+        2)At this state, we have the brightness of all the characters but we want to change all the brightness thanks to
+        the function changeBrightness that consist to change the brightness of each character with the equation:
+        (charBrightness-minBrightness)/(maxBrightness-minBrightness).
+        3)Now we divide the Image depending of the given number of character in row and we check the brightness average of
+        the sub-images and we find in our char set which character are the closest of the brightness average of the sub
+        image and put it in our new Ascii array and so on.
+        4) At the end we receive an 2D array that correspond to the conversion of our image to Ascii.
+        Improvement of the complexity:
+            when the user enter into the console the command render several times for the same image,without the use of
+            hashmap, the function will run each times at O(n), but with the use of an hashmap it allowed us that after the
+            first time the user enter render the next times he will enter the command render on the same image the
+            complexity time will be O(1) instead of O(n).
+
+    In order to create an iterator, I create the class Image view to know when start all the sub image.
+    Moreover in the class ImageIterableProperty i change the constructor to know how much I have to increment x and y to
+    pass to the next sub image.
+
+    My iterator: I change the given iterator. The only change is that I put xIncrement and yIncrement to pass to the
+     next subimage.For each subImage my iterator create an instance of ImageView that details when the subImage start at
+      x and y and what the size of the image .
+
+
+
+
+
+
+
+
+
+
+
+

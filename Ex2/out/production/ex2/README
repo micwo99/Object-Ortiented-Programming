@@ -1,0 +1,74 @@
+micwo99
+342768587
+
+=============================
+=      File description     =
+=============================
+Game.java - implements the Game class.
+Board.java - implements the Board class.
+Tournament.java - contains the Tournament implementation and the main method of the program.
+Player.java - implements the Player class.
+Renderer.java - implements the Renderer class.
+PlayerFactory.java - implements the PlayerFactory class.
+RendererFactory.java - implements the RendererFactory class.
+HumanPlayer.java - implements the HumanPlayer class.
+WhateverPlayer.java - implements the WhateverPlayer class.
+CleverPlayer.java - implements the CleverPlayer class.
+GeniusPlayer.java - implements the GeniusPlayer class.
+VoidRenderer.java - implements the VoidRenderer class.
+ConsoleRenderer.java - implements the ConsoleRenderer class.
+Mark.java - implements the Mark class.
+
+
+
+=============================
+=          Design           =
+=============================
+I decide to do two interfaces for Player and Renderer and also two Factories
+PlayerFactory and RendererFactory. Those interfaces and factories help us to not rewrite a code severals times and
+allows us to have a more readable code
+
+
+=============================
+=    Answers to questions   =
+=============================
+
+
+WhateverPlayer: At every turn of the whatever player I check which cases are empty in our board and the player
+chose one of them randomly
+CleverPlayer : the clever player (let assume that he plays X),checks in which row and columns there are the more X in a row
+and if there is a blank mark in this particular row or column if yes he will put a X in this row randomly between
+the blank cases  if there isn't blank cases in the row or the column he will find an other row or columns where
+he can put a X.
+GeniusPlayer : My genius player is the same that the clever one but I add a defense part,
+ which mean that my genius player will check if his opponent have more mark in a row than him if yes,it will try to block
+ his opponent, if not he will continue to try to have the more mark in a row
+
+
+ =============================
+ =    Tournament results   =
+ =============================
+
+WhateverPlayer vs CleverPlayer:
+
+######### Results #########
+Player 1, whatever won: 2210
+Player 2, clever won: 7790
+Ties: 0
+
+
+CleverPlayer vs GeniusPlayer:
+
+######### Results #########
+Player 1, genius won: 9564
+Player 2, clever won: 436
+Ties: 0
+
+WhateverPlayer vs WhateverPlayer:
+
+######### Results #########
+Player 1, whatever won: 5094
+Player 2, whatever won: 4897
+Ties: 9
+
+

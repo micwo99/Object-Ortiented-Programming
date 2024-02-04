@@ -1,0 +1,19 @@
+miwo99
+342768587
+
+For the creation of the bricks I decide to check what is the distance where i can put bricks
+ (remove the board and the space between each bricks) and i divide this distance by the num of bricks i want in each
+ line, And i create brick by brick until. if I want want more than one line I grow the Y coordinates after each line
+
+For the creation of the ball I decide to give it a size of 20*20,so the game is harder, if the paddle didn't success to
+touch the ball so the ball return at the middle of the window with a random direction.
+
+The creation of my paddle is the userPaddle we create in class, he moves depending on the user(press the arrows)
+
+The GraphicLifeCounter create hearts, which mean how much life I have left, every time the ball touch the bottom of the
+window I remove a heart, if I loose the num of hearts I have at the beginning I loose the game.
+
+The NumericLifeCounter informs the user how much life the user have, every time the ball touch the bottom of the
+window the number is decremented,if the user loose when he had one life the user loose the game.
+
+I put the hearts and the counter at the same line in the game and in a place that we can see them everytime.
